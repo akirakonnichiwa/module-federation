@@ -3,13 +3,19 @@ import React from "react";
 function App() {
   return (
     <table style={{ textAlign: "left" }}>
-      <tr style={{ margin: "10px" }}>
-        <th>Third</th>
-        <th>Element</th>
+      <tr>
+        <th>Name</th>
+        <th>Name</th>
+        <th>Name</th>
+        <th>Name</th>
+        <th>Name</th>
       </tr>
-      <tr style={{ margin: "10px" }}>
-        <td>info</td>
-        <td>extra info</td>
+      <tr>
+        <td>INFO</td>
+        <td>INFO</td>
+        <td>INFO</td>
+        <td>INFO</td>
+        <td>INFO</td>
       </tr>
     </table>
   );
