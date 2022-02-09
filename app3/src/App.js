@@ -4,12 +4,12 @@ function App() {
   return (
     <table style={{ textAlign: "left" }}>
       <tr style={{ margin: "10px" }}>
-        <th>ЗАГОЛОВОК</th>
-        <th>ЗАГОЛОВОК</th>
+        <th>Third</th>
+        <th>Element</th>
       </tr>
       <tr style={{ margin: "10px" }}>
-        <td>какие то данные</td>
-        <td>какие то данные</td>
+        <td>info</td>
+        <td>extra info</td>
       </tr>
     </table>
   );

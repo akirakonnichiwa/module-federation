@@ -10,6 +10,7 @@ function App(props) {
       <button style={{ margin: "5px" }} onClick={props.decreaseNum}>
         -
       </button>
+      <h5>Second Element</h5>
     </div>
   );
 }
