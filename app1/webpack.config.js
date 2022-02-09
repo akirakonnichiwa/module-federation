@@ -1,12 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const { ModuleFederationPlugin } = require('webpack').container;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  entry: './src/index',
-  mode: 'development',
+  entry: "./src/index",
+  mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     port: 3000,
   },
   output: {
@@ -16,25 +16,26 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: ["@babel/preset-react"],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app1',
-      library: { type: 'var', name: 'app1' },
+      name: "app1",
+      library: { type: "var", name: "app1" },
       remotes: {
-        app2: 'app2',
+        app2: "app2",
+        app3: "app3",
       },
-      shared: ['react', 'react-dom'],
+      shared: ["react", "react-dom"],
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
   ],
 };

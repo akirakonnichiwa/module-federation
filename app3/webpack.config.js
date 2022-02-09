@@ -8,10 +8,10 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3001,
+    port: 3002,
   },
   output: {
-    publicPath: "http://localhost:3001/", // Added this
+    publicPath: "http://localhost:3002/", // Added this
   },
   module: {
     rules: [
@@ -27,8 +27,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      library: { type: "var", name: "app2" },
+      name: "app3",
+      library: { type: "var", name: "app3" },
       filename: "remoteEntry.js",
       exposes: {
         // expose each component you want
