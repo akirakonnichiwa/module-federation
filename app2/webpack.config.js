@@ -3,11 +3,15 @@ const path = require("path");
 
 const { ModuleFederationPlugin } = require("webpack").container;
 
+const deps = require("./package.json").dependencies;
+
 module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+    },
     port: 3001,
   },
   output: {
@@ -34,7 +38,33 @@ module.exports = {
         // expose each component you want
         "./App": "./src/App",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        // "@emotion/react": {
+        //   singleton: true,
+        //   requiredVersion: deps['@emotion/react'],
+        // },
+        // "@emotion/styled": {
+        //   singleton: true,
+        // },
+        // "@mui/icons-material":{
+        //   singleton: true,
+        // },
+        // "@mui/material": {
+        //   singleton: true,
+        // },
+        // "@mui/styled-engine-sc": {
+        //   singleton: true,
+        // },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
