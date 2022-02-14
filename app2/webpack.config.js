@@ -12,6 +12,10 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
+    compress: true,
+    open: true,
+    hot: true,
+    historyApiFallback: true,
     port: 3001,
   },
   output: {
@@ -35,7 +39,6 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        // expose each component you want
         "./App": "./src/App",
       },
       shared: {
@@ -48,22 +51,6 @@ module.exports = {
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
-        // "@emotion/react": {
-        //   singleton: true,
-        //   requiredVersion: deps['@emotion/react'],
-        // },
-        // "@emotion/styled": {
-        //   singleton: true,
-        // },
-        // "@mui/icons-material":{
-        //   singleton: true,
-        // },
-        // "@mui/material": {
-        //   singleton: true,
-        // },
-        // "@mui/styled-engine-sc": {
-        //   singleton: true,
-        // },
       },
     }),
     new HtmlWebpackPlugin({

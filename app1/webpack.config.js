@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { ModuleFederationPlugin } = require("webpack").container;
 
-const deps = require('./package.json').dependencies
+const deps = require("./package.json").dependencies;
 
 module.exports = {
   entry: "./src/index",
@@ -11,6 +11,10 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
+    compress: true,
+    open: true,
+    hot: true,
+    historyApiFallback: true,
     port: 3000,
   },
   output: {
@@ -42,14 +46,14 @@ module.exports = {
             singleton: true,
             requiredVersion: deps.react,
           },
-          'react-dom': {
+          "react-dom": {
             singleton: true,
-            requiredVersion: deps['react-dom'],
+            requiredVersion: deps["react-dom"],
           },
-          '@mui/material': {
+          "@mui/material": {
             singleton: true,
-            requiredVersion: deps['@mui/material'],
-          }
+            requiredVersion: deps["@mui/material"],
+          },
         },
       ],
     }),
