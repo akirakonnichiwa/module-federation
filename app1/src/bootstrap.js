@@ -20,6 +20,7 @@ const App3 = React.lazy(() => import("app3/App"));
 
 function App() {
   const classes = useStyles();
+  1;
   // const [number, setNumber] = useState(0);
   return (
     <BrowserRouter>
@@ -32,7 +33,7 @@ function App() {
                   MICRO FRONTEND
                 </Typography>
               </Link>
-              <Link to="app2" className={classes.root}>
+              <Link to="/" className={classes.root}>
                 <Button color="inherit">Cards</Button>
               </Link>
               <Link to="app3" className={classes.root}>
@@ -46,7 +47,7 @@ function App() {
             <Routes>
               <Route path="app2" element={<App2 />} />
               <Route path="app3" element={<App3 />} />
-              <Route path="*" element={<Navigate to="app2" />} />
+              <Route exact path="*" element={<Navigate to="app2" />} />
             </Routes>
           </React.Suspense>
         </div>
